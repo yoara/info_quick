@@ -192,7 +192,7 @@ span.theKey {
 <body>
 
 <div id="container">
-	<h1><a href="<?php echo ROOT_IQ;?>"><img class="searchImg" style="margin-right: 0px;" src="<?php echo ROOT_IQ;?>/images/home.png" title="返回主页" alt="返回主页"/></a>IQ For U</h1>
+	<h1><a href="<?php echo ROOT_IQ_HOME;?>"><img class="searchImg" style="margin-right: 0px;" src="<?php echo ROOT_IQ;?>/images/home.png" title="返回主页" alt="返回主页"/></a>IQ For U</h1>
 	<form action="<?php echo GO_SEARCH;?>" id="searchForm" method="post">
 	<div id="body">
 		<input class="searchBox" name="searchInput" value="<?php echo $input;?>"/><img alt="" src="<?php echo ROOT_IQ;?>/images/search.png" class="searchImg" onclick="go_search()" />

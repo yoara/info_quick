@@ -1,5 +1,6 @@
 <?php 
 	define ('ROOT_IQ', "/iq");
+	define ('ROOT_IQ_HOME', ROOT_IQ."/index.php");
 	define ("ROOT_IQ_INDEX", "/index.php");
 	define ("ROOT_IQ_SUFFIX", "");
 	define ("LOCALE_CHARACTER","UTF-8");
@@ -21,7 +22,8 @@
 	define ("GO_ASK", ROOT_IQ.ROOT_IQ_INDEX."/study_ask/go_ask".ROOT_IQ_SUFFIX);
 	define ("GO_ANSWER", ROOT_IQ.ROOT_IQ_INDEX."/study_ask/go_answer".ROOT_IQ_SUFFIX);
 	define ("GO_SEE_ANSWER", ROOT_IQ.ROOT_IQ_INDEX."/study_ask/go_see".ROOT_IQ_SUFFIX);
-	define ("NOWASK", 2);
+	define ("GO_SEE_ALL", ROOT_IQ.ROOT_IQ_INDEX."/study_ask/go_seeAll".ROOT_IQ_SUFFIX);
+	define ("NOWASK", 3);
 	//define ("ANSWER_WORD", "答题一次就结束，妈妈再也不用担心我重复改答案了");
 	define ("ANSWER_WORD", "希望大家从自身培训需求出发，详实填写~同时为耽误您的工作时间表示歉意");
 	//define ("ANSWER_USER", "您的邮箱前缀：");

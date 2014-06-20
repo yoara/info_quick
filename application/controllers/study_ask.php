@@ -112,4 +112,55 @@ class Study_ask extends CI_Controller {
 			$this->load->view('study_ask/answer_compare',$search_info);
 		}
 	}
+	public function go_seeAll()
+	{
+		$search_info['ques_all'] = array();
+		$search_info['has_answer'] = 'NO';
+		$this->load->model('Study_question_model','question');
+		$this->load->model('Study_answer_model','answer');
+		$query_question = $this->question->query_All(NOWASK);	//参数为轮数
+		
+		//初始化題目ID到数组
+		if($query_question->num_rows()>0){
+			$qs = $query_question->result_array();
+			foreach ($qs as $value) {
+				$index = ''.$value['id'];
+				$search_info['ques_all'][$index] = array();
+				$search_info['ques_all'][$index]['A'] = 0;
+				$search_info['ques_all'][$index]['B'] = 0;
+				$search_info['ques_all'][$index]['C'] = 0;
+				$search_info['ques_all'][$index]['D'] = 0;
+				$search_info['ques_all'][$index]['E'] = 0;
+				$search_info['ques_all'][$index]['title'] = $value['question'];
+				$search_info['ques_all'][$index]['message'] = '';
+			}
+		}
+		
+		//查询各人答题
+		$lunshu = NOWASK;
+		$question_id = NOWASK*100;
+		$answer_all = $this->answer->query_all_answer($question_id);
+		if($answer_all->num_rows()>0){
+			$search_info['has_answer'] = 'OK';
+			$qs = $answer_all->result_array();
+			foreach ($qs as $value) {
+				$index = ''.$value['question_id'];
+				$answer_level = $value['answer'];
+				if(strlen($answer_level)>1){
+					if($answer_level!='没有答题'){
+						$search_info['ques_all'][$index]['message'] = $search_info['ques_all'][$index]['message'].
+							$answer_level.'<br/><br/>';
+					}else{
+						$search_info['ques_all'][$index]['message'] = $search_info['ques_all'][$index]['message'].
+							''.'<span><span/>';
+					}
+				}else{
+					$search_info['ques_all'][$index][$answer_level] = 
+						$search_info['ques_all'][$index][$answer_level] + 1;
+				}
+			}
+		}
+		
+		$this->load->view('study_ask/see_all',$search_info);
+	}
 }

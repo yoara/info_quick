@@ -61,19 +61,24 @@
 			$("#searchForm").attr("action","<?php echo GO_SEE_ANSWER;?>");
 			$("#searchForm").submit();
 		}
+		function go_seeAll(){
+			$("#searchForm").attr("action","<?php echo GO_SEE_ALL;?>");
+			$("#searchForm").submit();
+		}
 	</script>
 </head>
 <body>
 
 <div id="container">
-	<h1><a href="<?php echo ROOT_IQ;?>"><img class="searchImg" src="<?php echo ROOT_IQ;?>/images/home.png" title="返回主页" alt="返回主页"/></a>Welcome IQ!</h1>
+	<h1><a href="<?php echo ROOT_IQ_HOME;?>"><img class="searchImg" src="<?php echo ROOT_IQ;?>/images/home.png" title="返回主页" alt="返回主页"/></a>Welcome IQ!</h1>
 	<form action="<?php echo GO_ASK;?>" id="searchForm" method="post">
 	<div id="body">
 		<p><?php echo ANSWER_WORD;?></p>
 		<label for="nameBox"><?php echo ANSWER_USER;?></label>
 		<input class="nameBox" name="nameBox"/>
 		<input type="button" value="开始<?php echo ANSWER_BUTTON;?>" onclick="go_ask()"/>&nbsp;&nbsp;&nbsp;
-		<input type="button" value="<?php echo ANSWER_BUTTON;?>情况" onclick="go_see()"/>
+		<input type="button" value="个人<?php echo ANSWER_BUTTON;?>情况" onclick="go_see()"/>
+		<input type="button" value="统计情况" onclick="go_seeAll()"/>
 	</div>
 	</form>
 </div>

@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script type="text/javascript" src="<?php echo ROOT_IQ;?>/js/jquery.min.js"></script>
 	
-	<title>No Infos</title>
+	<title>反馈汇总</title>
 
 	<style type="text/css">
 
@@ -41,7 +41,7 @@
 	}
 	
 	p.footer{
-		text-align: right;
+		text-align: left;
 		font-size: 11px;
 		line-height: 32px;
 		padding: 0 10px 0 10px;
@@ -50,50 +50,49 @@
 	}
 	
 	#container{
-		margin: 200px 20px 0px 20px;
+		margin: 20px 20px 0px 20px;
 		border: 1px solid #D0D0D0;
 		-webkit-box-shadow: 0 0 8px #D0D0D0;
 	}
-	ul li {
-		margin-top: 15px;
-		margin-bottom: 15px;
-	}
-	a.add {
- 	text-decoration:none;
-	cursor: pointer;
-	color: #FF8C00;
-	}
-	
-	a.add:HOVER {
-		font-size: 10px;
-		color: #FF7F50;
-	}
-	p.li_title {
-	border-bottom: solid 1px #C0C0C0;
+div.info {
+	width: 80%;
+	float: left;
+	border: 1px solid #D0D0D0;
+	margin-left: 10px;
+	white-space:normal;
+	word-break:break-all;
+	margin-bottom: 10px;
+	margin-top: 10px;
 }
-img.searchImg{
-		height:30px;
-		width: 30px;
-		margin-bottom: -10px;
-		margin-left:10px;
-		cursor: pointer;
-	}
+
+div.clear {
+}
 	</style>
 </head>
 <body>
 
 <div id="container">
-	<h1><a href="<?php echo ROOT_IQ_HOME;?>"><img class="searchImg" src="<?php echo ROOT_IQ;?>/images/home.png" title="返回主页" alt="返回主页"/></a>Welcome IQ!</h1>
-		<ul>
-		<?php	for ($i = 0; $i < sizeof($no_infos); $i++) {?>
-			<li id="<?php echo $no_infos[$i]['no_id'];?>">
-				<p class="li_title"><span>搜索字：</span><?php echo $no_infos[$i]['input'];?>
-					<a class="add" href="<?php echo GO_INFO_ADD;?>" target="_blank">添砖加瓦?</a>
-				</p>
-			</li>
+	<h1>反馈汇总</h1>
+	<?php if($has_answer!='OK'){?>
+		<p><span>目前还没有人反馈！</span></p>
+	<?php }else{?>
+		<?php 
+			foreach ($ques_all as $value){ ?>
+			<p style="font-weight:bolder;">反馈：<?php echo $value['title'];?></p>
+				<?php if(strlen($value['message'])>1){ ?>
+					<?php echo $value['message'];?><br/>
+				<?php }else{?>
+					一颗星：<?php echo $value['A'];?><br/>
+					两颗星：<?php echo $value['B'];?><br/>
+					三颗星：<?php echo $value['C'];?><br/>
+					四颗星：<?php echo $value['D'];?><br/>
+					五颗星：<?php echo $value['E'];?><br/>
+					总评：<?php echo round(($value['A']*1+$value['B']*2+$value['C']*3+$value['D']*4+$value['E']*5)/
+								($value['A']+$value['B']+$value['C']+$value['D']+$value['E']),2);?><br/>
+				<?php }?>
 		<?php }?>
-		</ul>
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
+	<?php }?>
+	<p class="footer"><input type="button" onclick="window.history.go(-1)" value="返回"/></p>
 </div>
 
 </body>

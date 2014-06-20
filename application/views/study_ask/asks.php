@@ -203,7 +203,7 @@ span.theKey {
 <body>
 
 <div id="container">
-	<h1><a href="<?php echo ROOT_IQ;?>"><img class="searchImg" style="margin-right: 0px;" src="<?php echo ROOT_IQ;?>/images/home.png" title="返回主页" alt="返回主页"/></a>IQ For U</h1>
+	<h1><a href="<?php echo ROOT_IQ_HOME;?>"><img class="searchImg" style="margin-right: 0px;" src="<?php echo ROOT_IQ;?>/images/home.png" title="返回主页" alt="返回主页"/></a>IQ For U</h1>
 	<form action="<?php echo GO_ANSWER;?>" id="answerForm" method="post">
 	<input type="hidden" name="nameBox" value="<?php echo $input;?>"/>
 	<input type="hidden" id="valueBox" name="valueBox"/>

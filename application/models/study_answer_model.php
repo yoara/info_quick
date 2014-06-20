@@ -32,4 +32,11 @@ class Study_answer_model extends CI_Model{
 			$this->db->insert('Study_answer',$value);
 		}
 	}
+	
+	public function query_all_answer($question_id){
+		$this->load->database();
+		$this->db->where('question_id > ',$question_id);
+		$this->db->where('question_id < ',$question_id+100);
+		return $this->db->get('Study_answer');
+	}
 }

@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <body>
 <script language="javascript" type="text/javascript"> 
-	window.location.href='<?php echo ROOT_IQ;?>';
+	window.location.href='<?php echo ROOT_IQ_HOME;?>';
 </script>
 
 </body>
